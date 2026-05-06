@@ -10,6 +10,10 @@ public class TransacaoService {
 
     public void validarTransacao(TransacaoRequest transacaoRequest){
 
+        if (transacaoRequest == null || transacaoRequest.getValor() == null){
+            throw new IllegalArgumentException("Erro: O corpo da requisição não pode ser vazio e os campos valor e dataHora são obrigatórios.");
+        }
+
         // VALOR MAIOR OU IGUAL A ZERO
         if (transacaoRequest.getValor().compareTo(BigDecimal.ZERO) < 0 ){
             // transacao nao e valida. Valor menor ou ibgual a zero.

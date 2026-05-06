@@ -25,7 +25,5 @@ public class TransacaoService {
             throw new IllegalArgumentException ("Erro: Verificar data da Transação.");
         }
 
-        // DATA PRESENTE (BODY NAO PODE SER VAZIO)
-        // HORA PRESENTE
     }
 }

@@ -18,8 +18,16 @@ public class TransacoesController {
     @PostMapping
     public ResponseEntity adicionar(@RequestBody TransacaoRequest transacaoRequest) {
 
-        transacaoService.validarTransacao(transacaoRequest);
+        // Se der certo - Retorna o ERRO 201
+        try {
+            transacaoService.validarTransacao(transacaoRequest);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+        // Se der errado - Retorna o ERRO 422
+        catch(IllegalArgumentException exception) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+        }
+
     }
 }

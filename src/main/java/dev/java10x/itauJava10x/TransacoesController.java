@@ -18,7 +18,7 @@ public class TransacoesController {
     @PostMapping
     public ResponseEntity adicionar(@RequestBody TransacaoRequest transacaoRequest) {
 
-        validarTransacao(transacaoRequest);
+        transacaoService.validarTransacao(transacaoRequest);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

@@ -1,4 +1,4 @@
-package dev.java10x.itauJava10x;
+package dev.java10x.itauJava10x.Transacoes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,5 +14,13 @@ public class TransacaoRequest {
 
     private BigDecimal valor;
     private OffsetDateTime dataHora;
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public OffsetDateTime getDataHora() {
+        return dataHora;
+    }
 
 }

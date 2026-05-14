@@ -1,4 +1,4 @@
-package dev.java10x.itauJava10x;
+package dev.java10x.itauJava10x.Transacoes;
 
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ public class TransacaoService {
 
     public void validarTransacao(TransacaoRequest transacaoRequest){
 
-        if (transacaoRequest == null || transacaoRequest.getValor() == null){
+        if (transacaoRequest == null || transacaoRequest.getValor() == null || transacaoRequest.getDataHora() == null){
             throw new IllegalArgumentException("Erro: O corpo da requisição não pode ser vazio e os campos valor e dataHora são obrigatórios.");
         }
 

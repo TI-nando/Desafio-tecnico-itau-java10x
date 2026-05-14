@@ -1,6 +1,7 @@
 package dev.java10x.itauJava10x.Estatisticas;
 
 import dev.java10x.itauJava10x.Transacoes.TransacaoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.OffsetDateTime;
 
+@Slf4j
 @RestController
 @RequestMapping("/estatistica")
 public class EstatisticasController {
@@ -23,14 +25,15 @@ public class EstatisticasController {
     @GetMapping
     public ResponseEntity estatistica() {
 
+        //Log de requisição criado com lombok
+        log.info("Calculando Estatisticas de Transações: ");
+
         // Clacular quantas transacoes acontecem em N segundos
         final var horaInicial = OffsetDateTime
                 .now()
                 .minusSeconds(estatisticaProperties.segundos());
 
-
         return ResponseEntity.ok(transacaoRepository.estatistica(horaInicial));
     }
-
 
 }

@@ -1,10 +1,12 @@
 package dev.java10x.itauJava10x.Transacoes;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/transacao") // Nome da rota
 public class TransacoesController {
@@ -24,6 +26,9 @@ public class TransacoesController {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         catch(IllegalArgumentException exception) {
+
+            log.error("Erro em uma ou mais validações, tente novamente.");
+
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
         }
         catch(Exception e) {
